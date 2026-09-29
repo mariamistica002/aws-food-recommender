@@ -1,0 +1,7 @@
+.aws-sam/
+.sam/
+node_modules/
+.env
+.env.*
+*.log
+.aws/

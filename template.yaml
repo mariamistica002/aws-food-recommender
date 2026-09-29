@@ -1,0 +1,88 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AI-Based Food Recommendation System — DynamoDB + Lambda + S3.
+  Item #21 in project plan. Content-based recommender: hard dietary
+  filters, then weighted scoring on cuisine, spice level, and
+  flavor/cuisine overlap with a user's liked dishes.
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 10
+    MemorySize: 256
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref MenuItemsTable
+        DATA_BUCKET: !Ref MenuDataBucket
+  Api:
+    EndpointConfiguration: REGIONAL
+    Cors:
+      AllowMethods: "'OPTIONS,POST'"
+      AllowHeaders: "'Content-Type'"
+      AllowOrigin: "'*'"
+
+Resources:
+
+  # --- S3: source-of-truth data lake for the raw menu catalog ---
+  MenuDataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "food-recommender-data-${AWS::AccountId}-${AWS::Region}"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  # --- DynamoDB: queryable menu catalog the recommender reads from ---
+  MenuItemsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: MenuItems
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  # --- Lambda: one-time/on-demand loader, S3 -> DynamoDB ---
+  SeedFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: FoodRecommenderSeed
+      Handler: index.handler
+      CodeUri: src/seed/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref MenuItemsTable
+        - S3ReadPolicy:
+            BucketName: !Ref MenuDataBucket
+
+  # --- Lambda: the recommendation engine ---
+  RecommendFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: FoodRecommenderRecommend
+      Handler: index.handler
+      CodeUri: src/recommend/
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref MenuItemsTable
+      Events:
+        RecommendApi:
+          Type: Api
+          Properties:
+            Path: /recommend
+            Method: post
+
+Outputs:
+  ApiUrl:
+    Description: Invoke URL for the recommend endpoint
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/recommend"
+  MenuDataBucketName:
+    Value: !Ref MenuDataBucket
+  MenuItemsTableName:
+    Value: !Ref MenuItemsTable

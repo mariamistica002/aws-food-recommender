@@ -1,0 +1,22 @@
+[
+  {"id":"1","name":"Paneer Tikka Masala","cuisine":"Indian","diet":["Vegetarian","Gluten-Free","Nut-Free"],"spice":2,"flavors":["creamy","smoky","tangy"]},
+  {"id":"2","name":"Chicken Vindaloo","cuisine":"Indian","diet":["Gluten-Free","Dairy-Free","Nut-Free","Halal"],"spice":3,"flavors":["spicy","tangy","smoky"]},
+  {"id":"3","name":"Margherita Pizza","cuisine":"Italian","diet":["Vegetarian","Nut-Free"],"spice":0,"flavors":["savory","umami","herby"]},
+  {"id":"4","name":"Spaghetti Carbonara","cuisine":"Italian","diet":["Nut-Free"],"spice":0,"flavors":["creamy","savory","umami"]},
+  {"id":"5","name":"Fish Tacos","cuisine":"Mexican","diet":["Dairy-Free","Nut-Free"],"spice":1,"flavors":["citrusy","savory","tangy"]},
+  {"id":"6","name":"Vegan Black Bean Chili","cuisine":"Mexican","diet":["Vegan","Vegetarian","Gluten-Free","Dairy-Free","Nut-Free"],"spice":2,"flavors":["smoky","spicy","savory"]},
+  {"id":"7","name":"Pad Thai","cuisine":"Thai","diet":["Dairy-Free"],"spice":1,"flavors":["sweet","tangy","nutty"]},
+  {"id":"8","name":"Green Curry","cuisine":"Thai","diet":["Gluten-Free","Dairy-Free","Nut-Free"],"spice":3,"flavors":["spicy","creamy","herby"]},
+  {"id":"9","name":"Salmon Nigiri","cuisine":"Japanese","diet":["Gluten-Free","Dairy-Free","Nut-Free"],"spice":0,"flavors":["umami","savory","citrusy"]},
+  {"id":"10","name":"Vegetable Tempura","cuisine":"Japanese","diet":["Vegetarian","Dairy-Free"],"spice":0,"flavors":["savory","umami","herby"]},
+  {"id":"11","name":"Falafel Wrap","cuisine":"Mediterranean","diet":["Vegan","Vegetarian","Dairy-Free","Nut-Free"],"spice":1,"flavors":["herby","tangy","savory"]},
+  {"id":"12","name":"Greek Salad","cuisine":"Mediterranean","diet":["Vegetarian","Gluten-Free","Nut-Free"],"spice":0,"flavors":["tangy","citrusy","savory"]},
+  {"id":"13","name":"Classic Cheeseburger","cuisine":"American","diet":["Nut-Free"],"spice":0,"flavors":["savory","umami","smoky"]},
+  {"id":"14","name":"BBQ Pulled Pork","cuisine":"American","diet":["Gluten-Free","Dairy-Free","Nut-Free"],"spice":2,"flavors":["smoky","sweet","tangy"]},
+  {"id":"15","name":"Kung Pao Chicken","cuisine":"Chinese","diet":["Dairy-Free"],"spice":3,"flavors":["spicy","nutty","savory"]},
+  {"id":"16","name":"Vegetable Fried Rice","cuisine":"Chinese","diet":["Vegetarian","Dairy-Free","Nut-Free"],"spice":1,"flavors":["savory","umami","herby"]},
+  {"id":"17","name":"Butter Chicken","cuisine":"Indian","diet":["Gluten-Free","Nut-Free"],"spice":1,"flavors":["creamy","sweet","savory"]},
+  {"id":"18","name":"Lentil Dal","cuisine":"Indian","diet":["Vegan","Vegetarian","Gluten-Free","Dairy-Free","Nut-Free","Halal"],"spice":1,"flavors":["savory","herby","umami"]},
+  {"id":"19","name":"Caprese Salad","cuisine":"Italian","diet":["Vegetarian","Gluten-Free","Nut-Free"],"spice":0,"flavors":["creamy","savory","herby"]},
+  {"id":"20","name":"Shrimp Pad See Ew","cuisine":"Thai","diet":["Dairy-Free","Nut-Free"],"spice":2,"flavors":["savory","smoky","umami"]}
+]

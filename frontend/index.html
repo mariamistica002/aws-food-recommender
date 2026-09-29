@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plate — Food Recommendation Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker serif">AI-Based Food Recommendation System</p>
+    <h1>What are you in the mood for?</h1>
+    <p>Set your dietary needs, favorite cuisines, and spice tolerance, then mark a few dishes you've enjoyed before. Your choices are sent to the AWS recommendation service (API Gateway + Lambda + DynamoDB), which scores every dish and sends back a ranked list.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <div class="group">
+        <h3>Dietary preferences</h3>
+        <p class="hint">Hard filters — dishes that don't match are excluded.</p>
+        <div class="chips" id="dietChips"></div>
+      </div>
+      <div class="group">
+        <h3>Cuisine you're craving</h3>
+        <p class="hint">Pick as many as you like.</p>
+        <div class="chips" id="cuisineChips"></div>
+      </div>
+      <div class="group">
+        <h3>Spice level</h3>
+        <div class="slider-row">
+          <input type="range" id="spice" min="0" max="3" value="1" step="1" aria-label="Spice level">
+        </div>
+        <div class="slider-labels"><span>None</span><span>Mild</span><span>Medium</span><span>Hot</span></div>
+      </div>
+      <div class="group">
+        <h3>Previously enjoyed</h3>
+        <p class="hint">The engine boosts dishes similar to these.</p>
+        <div class="liked-list" id="likedList"></div>
+      </div>
+    </div>
+
+    <div class="results">
+      <h2>Recommended for you</h2>
+      <p id="status" class="count" aria-live="polite"></p>
+      <div id="results"></div>
+    </div>
+  </div>
+
+  <footer>Recommendations are scored by your AWS Lambda function.</footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
